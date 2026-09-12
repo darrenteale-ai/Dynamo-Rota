@@ -12,8 +12,6 @@ services:
     volumes:
       - rota-data:/app/data
     env_file:
-      - ./backend/.env
-    restart: unless-stopped
 
   frontend:
     build:
@@ -30,3 +28,4 @@ services:
 
 volumes:
   rota-data:
+Remove unsupported VOLUME instruction
