@@ -12,7 +12,9 @@ COPY src ./src
 ENV NODE_ENV=production
 EXPOSE 4000
 
-# /app/data holds the SQLite file — mount a volume here so data survives container restarts.
-VOLUME ["/app/data"]
+# NOTE: /app/data holds the SQLite file. To persist it across deploys/restarts,
+# attach a Railway Volume mounted at /app/data via the service's Volumes settings
+# (dashboard or railway.json/railway.toml "volumes" config) — Docker's VOLUME
+# instruction is not supported by Railway's build system.
 
 CMD ["node", "src/server.js"]
